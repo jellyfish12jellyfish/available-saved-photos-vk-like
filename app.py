@@ -27,10 +27,9 @@ def main():
         return
 
     tools = vk_api.VkTools(vk_session)
-    # получить сохраненные фотографии друга
     photos = tools.get_all('photos.get', 100, {
         "owner_id": config.owner_id[1],
-        'album_id': '272630838',  # saved
+        'album_id': config.ln_album_id,  # or saved
         'rev': 1,
         'count': 100})
 
