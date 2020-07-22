@@ -29,20 +29,20 @@ def main():
     tools = vk_api.VkTools(vk_session)
     # получить сохраненные фотографии друга
     photos = tools.get_all('photos.get', 100, {
-        "owner_id": config.owner_id,
-        'album_id': 'saved',
+        "owner_id": config.owner_id[0],
+        'album_id': 'saved',  # saved
         'rev': 1,
         'count': 100})
 
     vk = vk_session.get_api()
     # добавить id фотографий в массив
     array = []
-    for i in range(100):  # позже - переписать итерацию, рендж заменить на кол-во фоток, сделав соответствующий запрос
+    for i in range(10):  # позже - переписать итерацию, рендж заменить на кол-во фоток, сделав соответствующий запрос
         photo_id = photos['items'][i]['id']
         array.append(photo_id)
 
-    item = 1
     # поставить "лайк"
+    item = 1
     for idx in array:
         item += 1
         time.sleep(2)
